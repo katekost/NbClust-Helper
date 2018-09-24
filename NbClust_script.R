@@ -43,27 +43,39 @@ res_iris<-NbClust::NbClust(iris_4, distance = "euclidean", min.nc=2, max.nc=10,
              method = "ward.D", index = "all")
 
 # Look, that have received and that is actually
+
 iris_with_res <- cbind(iris_4, iris[, 5])
 iris_with_res <- cbind(iris_with_res, res_iris$Best.partition)
 iris_with_res[Species=='virginica']
 
 # Index values for all cluster solutions
+
 res_iris$All.index
+
 # Critical values for some indices for all cluster solutions
+
 res_iris$All.CriticalValues
+
 # The best number of clusters offered by each index
+
 res_iris$Best.nc
+
 # Splitting into optimal clusters
+
 res_iris$Best.partition
 
 # Apply the chosen algorithm with the optimal number of clusters
+
 irisCluster <- kmeans(iris[, 3:4], 3, nstart = 20)
 
 library(haven)
+
 data <- read_sav("D:/second_clustering.sav")
 data <- as.data.table(data)
+
 names(data)
 data_sel <- data[, 5:41]
 names(data_sel)
+
 res_sber <- NbClust::NbClust(data_sel, distance = "euclidean", min.nc=2, max.nc=10,
                              method = "kmeans", index = "all")
