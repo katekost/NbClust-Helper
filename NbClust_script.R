@@ -68,6 +68,8 @@ res_iris$Best.partition
 
 irisCluster <- kmeans(iris[, 3:4], 3, nstart = 20)
 
+# Another example
+
 library(haven)
 
 data <- read_sav("D:/second_clustering.sav")
